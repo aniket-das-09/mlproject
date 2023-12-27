@@ -1,5 +1,7 @@
 import sys
-import logging
+import os
+sys.path.append(os.path.abspath('E:\Data Science and AI\Projects\mlproject\src'))
+from logger import logging
 
 def error_message_detail(error,error_detail:sys):
     _,_,exc_tb=error_detail.exc_info()
