@@ -11,6 +11,9 @@ from dataclasses import dataclass
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
 
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
+
 @dataclass       #Use this decorator only if you want to define variables in the class
 class DataIngestionConfig:
     train_data_path: str=os.path.join("artifacts","train.csv")          #The output of data ingestion will be stored in "train.csv"
@@ -52,7 +55,11 @@ class DataIngestion:
 #In order to check whether the above code is working fine or not, Use the below code:
 if __name__ == "__main__":
     obj = DataIngestion()
-    train_data, test_data = obj.initiate_data_ingestion()
+    train_data, test_data = obj.initiate_data_ingestion() #Returns the train data and test data
 
     data_transformation = DataTransformation()
-    data_transformation.initiate_data_transformation(train_data,test_data)
+    train_arr,test_arr,_ = data_transformation.initiate_data_transformation(train_data,test_data) 
+    #Returns train_array(X_train+y_train) and test_array(X_test+y_test)
+
+    modeltrainer = ModelTrainer()
+    print(modeltrainer.initiate_model_trainer(train_arr,test_arr))    #Returns r2 square of the best model
