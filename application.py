@@ -39,4 +39,5 @@ def predict_datapoint():
 #To test whether app.py is working fine or not, Use the below code:
     
 if __name__ == "__main__":
-    app.run("0.0.0.0",debug=True)
+    # app.run("0.0.0.0",debug=True), Use this for app.py
+    app.run("0.0.0.0")
