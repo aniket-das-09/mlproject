@@ -40,4 +40,4 @@ def predict_datapoint():
     
 if __name__ == "__main__":
     # app.run("0.0.0.0",debug=True), Use this for app.py
-    app.run("0.0.0.0")
+    app.run("0.0.0.0", port=8000)
